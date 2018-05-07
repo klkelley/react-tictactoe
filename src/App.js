@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import Board from './Board';
 import './App.css';
-import axios from 'axios'
 
 class App extends Component {
   render() {
@@ -14,6 +14,9 @@ class App extends Component {
         <p className="App-intro">
           Tic Tac Toe!
         </p>
+        <div className="game-board">
+          <Board />
+        </div>
       </div>
     );
   }
