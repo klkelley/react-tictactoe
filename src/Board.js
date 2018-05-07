@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import Square from './Square';
 
 class Board extends Component {
   renderSquare(i) {
-    return <Square />
+    return <Square/>
   }
 
   render() {
