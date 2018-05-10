@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
-import Board from './Board';
+import logo from '../images/logo.svg';
+import Game from './Game'
 import './App.css';
 
 class App extends Component {
@@ -11,12 +11,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo"/>
           <h1 className="App-title">Welcome to Tic Tac Toe</h1>
         </header>
-        <p className="App-intro">
-          Tic Tac Toe!
-        </p>
-        <div className="game-board">
-          <Board/>
-        </div>
+          <Game/>
       </div>
     );
   }

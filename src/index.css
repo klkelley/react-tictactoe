@@ -6,6 +6,7 @@ body {
 
 .game-board {
   display: inline-flex;
+  margin-top: 50px;
 }
 
 .square {
