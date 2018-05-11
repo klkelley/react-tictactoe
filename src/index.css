@@ -5,8 +5,8 @@ body {
 }
 
 .game-board {
-  display: inline-flex;
-  margin-top: 50px;
+  display: inline-block;
+  margin-top: 20px;
 }
 
 .square {
