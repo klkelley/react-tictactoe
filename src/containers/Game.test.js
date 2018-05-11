@@ -38,3 +38,23 @@ it('Does not submit a post request to API when there is a tie', () => {
   wrapper.find('.board-row').children().first().simulate('click');
   !expect(api.postMove).toBeCalled();
 });
+
+it('Displays a winner when someone has won', () => {
+  const wrapper = mount(gameState);
+  wrapper.setState({winner: true});
+  wrapper.setState({winningPlayer: 'Player X Wins!'});
+  expect(wrapper.find('.game-results').text()).toEqual("Player X Wins!");
+})
+
+it('Displays a tie when game is tied', () => {
+  const wrapper = mount(gameState);
+  wrapper.setState({tie: true});
+  wrapper.setState({winningPlayer: "Its a tie!"});
+  expect(wrapper.find('.game-results').text()).toEqual("Its a tie!");
+});
+
+it('Does not display any text if game isnt won or tied', () => {
+  const wrapper = mount(gameState);
+  expect(wrapper.find('.game-results').text()).toEqual("");
+});
+

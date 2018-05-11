@@ -9,6 +9,7 @@ class Game extends Component {
       board: [0, 1, 2, 3, 4, 5, 6, 7, 8],
       winner: false,
       tie: false,
+      winningPlayer: null
     }
   }
 
@@ -26,16 +27,23 @@ class Game extends Component {
     this.setState({
       board: newGameState.board,
       winner: newGameState.winner,
-      tie: newGameState.tie
+      tie: newGameState.tie,
+      winningPlayer: newGameState.winningPlayer
     })
   };
 
   componentDidUpdate() {
   }
 
+  gameResults() {
+    return this.state.winner || this.state.tie ?
+      <div className={'game-results'}><p>{this.state.winningPlayer}</p></div> : <div className={'game-results'}/>
+  }
+
   render() {
     return (
       <div className={'game-board'}>
+        {this.gameResults()}
         <Board board={this.state.board} handleClick={this.handleClick}/>
       </div>
     )
