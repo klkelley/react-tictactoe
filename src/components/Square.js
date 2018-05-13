@@ -10,7 +10,7 @@ class Square extends Component {
 
   render() {
     return (
-      <button className="square" onClick={this.placeMarker()}>
+      <button disabled={this.props.disabled} className="square" onClick={this.placeMarker()}>
         {Number.isInteger(this.props.value) ? null : this.props.value}
       </button>
     )
