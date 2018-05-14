@@ -8,7 +8,7 @@ class Board extends Component {
   }
 
   renderSquare(i) {
-    return <Square value={i} handleClick={this.handleClick}/>
+    return <Square value={i} disabled={this.props.disabled} handleClick={this.handleClick}/>
   }
 
   render() {
