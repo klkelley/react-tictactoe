@@ -9,7 +9,7 @@ class Game extends Component {
     super(props);
     this.state = {
       currentState: States.PLAYING,
-      board: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+      board: new Array(9).fill(null),
       gameState: false,
       gameResults: null
     }
