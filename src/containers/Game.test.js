@@ -27,29 +27,29 @@ it('Submits a post request to API when an open square is clicked', () => {
 
 it('Does not submit a post request to API when there is a winner', () => {
   const wrapper = mount(gameState);
-  wrapper.setState({winner: true})
+  wrapper.setState({gameState: true});
   wrapper.find('.board-row').children().first().simulate('click');
   !expect(api.postMove).toBeCalled();
 });
 
 it('Does not submit a post request to API when there is a tie', () => {
   const wrapper = mount(gameState);
-  wrapper.setState({tie: true});
+  wrapper.setState({gameState: true});
   wrapper.find('.board-row').children().first().simulate('click');
   !expect(api.postMove).toBeCalled();
 });
 
 it('Displays a winner when someone has won', () => {
   const wrapper = mount(gameState);
-  wrapper.setState({winner: true});
-  wrapper.setState({winningPlayer: 'Player X Wins!'});
+  wrapper.setState({gameState: true});
+  wrapper.setState({gameResults: 'Player X Wins!'});
   expect(wrapper.find('.game-results').text()).toEqual("Player X Wins!");
-})
+});
 
 it('Displays a tie when game is tied', () => {
   const wrapper = mount(gameState);
-  wrapper.setState({tie: true});
-  wrapper.setState({winningPlayer: "Its a tie!"});
+  wrapper.setState({gameState: true});
+  wrapper.setState({gameResults: "Its a tie!"});
   expect(wrapper.find('.game-results').text()).toEqual("Its a tie!");
 });
 
@@ -58,3 +58,14 @@ it('Does not display any text if game isnt won or tied', () => {
   expect(wrapper.find('.game-results').text()).toEqual("");
 });
 
+it('Disables the board when State is IDLE', () => {
+  const wrapper = mount(gameState);
+  wrapper.setState({currentState: true});
+  expect(wrapper.find('.board-row').children().first().props().disabled).toEqual(true);
+});
+
+it('If State is playing board is not disabled', () => {
+  const wrapper = mount(gameState);
+  wrapper.setState({currentState: false});
+  expect(wrapper.find('.board-row').children().first().props().disabled).toEqual(false);
+});

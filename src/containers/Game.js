@@ -10,15 +10,14 @@ class Game extends Component {
     this.state = {
       currentState: States.PLAYING,
       board: [0, 1, 2, 3, 4, 5, 6, 7, 8],
-      winner: false,
-      tie: false,
-      winningPlayer: null
+      gameState: false,
+      gameResults: null
     }
   }
 
   handleClick = (move) => {
     this.transition(States.IDLE);
-    if (!this.state.winner && !this.state.tie) {
+    if (!this.state.gameState) {
       const data = {
         "board": this.state.board,
         "spot": move
@@ -30,16 +29,15 @@ class Game extends Component {
   updateGameState = (newGameState) => {
     this.setState({
       board: newGameState.board,
-      winner: newGameState.winner,
-      tie: newGameState.tie,
-      winningPlayer: newGameState.winningPlayer
+      gameState: newGameState.gameState,
+      gameResults: newGameState.gameResults
     });
-    this.state.winner || this.state.tie ? this.transition(States.IDLE) : this.transition(States.PLAYING)
+    this.state.gameState ? this.transition(States.IDLE) : this.transition(States.PLAYING)
   };
 
   gameResults() {
-    return this.state.winner || this.state.tie ?
-      <div className={'game-results'}><p>{this.state.winningPlayer}</p></div> : <div className={'game-results'}/>
+    return this.state.gameState ?
+      <div className={'game-results'}><p>{this.state.gameResults}</p></div> : <div className={'game-results'}/>
   }
 
   transition(to) {
